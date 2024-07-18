@@ -9,26 +9,54 @@
 package com.math;
 
 import static org.junit.Assert.*;
-import org.junit.Test;
+
+import junit.extensions.TestSetup;
+import org.junit.*;
 
 public class CalculatorTest {
+    // BUSINESS OBJECT(S) UNDER TEST - CALLED THE "FIXTURE"
+    private Calculator calc;
 
+    // SETUP METHODS
+
+
+    @BeforeClass
+    public static void beforeClass() {
+        System.out.println("beforeClass");
+    }
+
+    @AfterClass
+    public static void afterClass() {
+        System.out.println("afterClass");
+    }
+
+    @Before
+    public void setUp() {
+        System.out.println("setUp");
+        calc = new Calculator();
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("tearDown");
+    }
+
+    // TESTS
     @Test
     public void testAdd() {
-        Calculator calc = new Calculator();
+        System.out.println("testAdd");
         assertEquals(5, calc.add(1, 4));  // expected, actual
     }
 
     @Test
-    public void divide() {
-        Calculator calc = new Calculator();
-        double result = calc.divide(5, 2);
-        assertEquals(2.5, result, .001);
+    public void testDivide() {
+        System.out.println("testDivide");
+        assertEquals(2.5, calc.divide(5, 2), .001); // expected, actual, delta
     }
 
     @Test
-    public void isEven() {
-        Calculator calc = new Calculator();
+    public void testIsEven() {
+        System.out.println("testIsEven");
         assertTrue(calc.isEven(10));
         assertFalse(calc.isEven(11));
     }
