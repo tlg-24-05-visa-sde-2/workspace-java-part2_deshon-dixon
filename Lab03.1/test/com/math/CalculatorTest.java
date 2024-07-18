@@ -18,8 +18,6 @@ public class CalculatorTest {
     private Calculator calc;
 
     // SETUP METHODS
-
-
     @BeforeClass
     public static void beforeClass() {
         System.out.println("beforeClass");
