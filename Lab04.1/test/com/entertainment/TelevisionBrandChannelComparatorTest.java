@@ -13,7 +13,7 @@ import java.util.Comparator;
 import org.junit.Test;
 
 public class TelevisionBrandChannelComparatorTest {
-    private Comparator<Television> comparator = new TelevisionBrandChannelComparator();
+    private final Comparator<Television> comparator = new TelevisionBrandChannelComparator();
 
     @Test
     public void testCompare() throws InvalidChannelException {  // throws clause needed because it's an unhandled checked exception
@@ -30,6 +30,6 @@ public class TelevisionBrandChannelComparatorTest {
         assertTrue(comparator.compare(tv1, tv2) < 0);  // RCA = RCA, 50 < 60
 
         tv2.changeChannel(50);  // now all properties are the same
-        assertTrue(comparator.compare(tv1, tv2) == 0); // RCA = RCA, 50 = 50
+        assertEquals(0, comparator.compare(tv1, tv2)); // RCA = RCA, 50 = 50
     }
 }

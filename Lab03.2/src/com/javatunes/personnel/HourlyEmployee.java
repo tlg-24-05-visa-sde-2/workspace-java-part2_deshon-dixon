@@ -68,8 +68,7 @@ public class HourlyEmployee extends Employee {
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
-        if (obj instanceof HourlyEmployee) {
-            HourlyEmployee other = (HourlyEmployee) obj;
+        if (obj instanceof HourlyEmployee other) {
             result = super.equals(obj) &&
                      Objects.equals(this.getRate(), other.getRate()) &&
                      Objects.equals(this.getHours(), other.getHours());

@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Department {
     private String name;
     private String location;
-    private Collection<Employee> employees = new ArrayList<>();
+    private final Collection<Employee> employees = new ArrayList<>();
 
     public Department() {
     }

@@ -111,6 +111,6 @@ public class TelevisionTest {
         assertTrue(tv3.compareTo(tv2) > 0);  // Zenith > Sony
 
         tv2.setBrand("RCA");
-        assertTrue(tv1.compareTo(tv2) == 0); // RCA = RCA
+        assertEquals(0, tv1.compareTo(tv2)); // RCA = RCA
     }
 }

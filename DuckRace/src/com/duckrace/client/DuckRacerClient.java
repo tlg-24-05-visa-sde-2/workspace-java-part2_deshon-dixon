@@ -22,5 +22,6 @@ class DuckRacerClient {
 
         duckRacer.win(Reward.DEBIT_CARD);
         System.out.println(rewards);
+
     }
 }

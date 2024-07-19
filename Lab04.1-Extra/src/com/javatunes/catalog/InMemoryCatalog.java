@@ -48,7 +48,7 @@ public class InMemoryCatalog implements Catalog {
             }
         }
         return null;
-    };
+    }
 
     /**
      * Returns a collection of items that match the supplied keyword.

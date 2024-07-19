@@ -19,7 +19,7 @@ public class Television implements Comparable<Television> {
     private String brand;
     private int volume;
     private DisplayType display;
-    private Tuner tuner = new Tuner();  // set up internally and used for channel management
+    private final Tuner tuner = new Tuner();  // set up internally and used for channel management
 
     public Television() {
     }
@@ -106,8 +106,7 @@ public class Television implements Comparable<Television> {
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
-        if (obj instanceof Television) {
-            Television other = (Television) obj;
+        if (obj instanceof Television other) {
             result = Objects.equals(this.getBrand(), other.getBrand()) &&
                      Objects.equals(this.getVolume(), other.getVolume()) &&
                      Objects.equals(this.getDisplay(), other.getDisplay());

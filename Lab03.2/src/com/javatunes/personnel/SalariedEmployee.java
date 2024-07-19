@@ -58,8 +58,7 @@ public class SalariedEmployee extends Employee {
     @Override
     public boolean equals(Object obj) {
         boolean result = false;
-        if (obj instanceof SalariedEmployee) {
-            SalariedEmployee other = (SalariedEmployee) obj;
+        if (obj instanceof SalariedEmployee other) {
             result = super.equals(obj) &&
                      Objects.equals(this.getSalary(), other.getSalary());
         }
