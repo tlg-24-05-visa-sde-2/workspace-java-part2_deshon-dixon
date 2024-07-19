@@ -61,7 +61,8 @@ public class InMemoryCatalog implements Catalog {
      */
     @Override
     public Collection<MusicItem> findByKeyword(String keyword) {
-        List<MusicItem> result = new ArrayList<>();
+        Collection<MusicItem> result = new ArrayList<>();
+
         for (MusicItem item : catalogData) {
             if (item.getTitle().contains(keyword) ||
                     item.getArtist().contains(keyword)) {
@@ -169,10 +170,11 @@ public class InMemoryCatalog implements Catalog {
     }
 
     /**
-     * TASK: determine average price of our low-cost, extensive catalog of music.
+     * TASK: determine the average price of our low-cost, extensive catalog of music.
      */
-//    public double findAveragePrice() {
-//    }
+    public double findAveragePrice(MusicCategory category) {
+        return 0.0;
+    }
 
 
     /**
