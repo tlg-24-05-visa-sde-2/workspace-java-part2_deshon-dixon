@@ -21,7 +21,7 @@ public class ShoppingCart<T extends Product> {
     private final Collection<T> items = new ArrayList<T>();  // diamond not used here just to emphasize the T
 
     public double total() {
-        double result = 0;
+        double result = 0.0;
         for (T item : items) {
             result += item.getPrice();
         }
