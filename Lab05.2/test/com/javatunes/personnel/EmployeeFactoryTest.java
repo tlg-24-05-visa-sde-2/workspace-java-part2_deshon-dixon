@@ -1,6 +1,8 @@
 package com.javatunes.personnel;
 
 import static org.junit.Assert.*;
+
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Before;
@@ -52,7 +54,15 @@ public class EmployeeFactoryTest {
      */
     @Test
     public void testCreateEmployeeSalaried() {
-        // TODO
+        Employee emp = EmployeeFactory.createEmployee(seMap);
+
+        assertEquals(SalariedEmployee.class, emp.getClass());
+
+        assertEquals("Jackie", emp.getName());
+        assertEquals(Date.valueOf("1990-08-24"), emp.getHireDate());
+
+        SalariedEmployee se = (SalariedEmployee) emp;
+        assertEquals(50000.0, se.getSalary(), .001);
     }
 
     /**
@@ -60,15 +70,27 @@ public class EmployeeFactoryTest {
      */
     @Test
     public void testCreateEmployeeHourly() {
-        // TODO
+        Employee emp = EmployeeFactory.createEmployee(heMap);
+
+        assertEquals(HourlyEmployee.class, emp.getClass());
+
+        assertEquals("Jackie",emp.getName());
+        assertEquals(Date.valueOf("1990-08-24"), emp.getHireDate());
+
+        HourlyEmployee he = (HourlyEmployee) emp;
+        assertEquals(50.0, he.getRate(), 0.001);
+        assertEquals(40.0, he.getHours(), 0.001);
     }
 
     /**
      * TASK: verify that passing a map with an invalid "type" value results in IllegalArgumentException.
      * The only valid values for "type" are "HE" or "SE".
      */
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testCreateEmployeeInvalidTypeThrowsIllegalArgumentException() {
-        // TODO
+        Map<String, String> invalidMap = new HashMap<>(seMap);
+        invalidMap.put("type", "INVALID");
+
+        EmployeeFactory.createEmployee(invalidMap);
     }
 }
