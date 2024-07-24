@@ -52,7 +52,8 @@ public class Board {
      * Either way, it needs to win().
      */
     public void update(int id, Reward reward) {
-        DuckRacer racer;
+        DuckRacer racer = null;
+
         if (racerMap.containsKey(id)) {
             racer = racerMap.get(id);
 
@@ -67,10 +68,23 @@ public class Board {
      * TODO: render the data as we see it in the "real" application
      */
     public void show() {
+        // if (racerMap.isEmpty())
+        //        there are currently no results to show
+        // else
+        //    do the work below
         Collection<DuckRacer> racers = racerMap.values();
 
+        String header = """
+            
+            Duck Race Results
+            =================
+            
+            id    name      wins     rewards
+            --    ----      ----     -------""";
+        System.out.println(header);
+
             for (DuckRacer racer : racers) {
-                System.out.println(racer.getId() + " " + racer.getName() + " " + racer.getWins() + " " + racer.getRewards());
+                System.out.println(racer.getId() + "     " + racer.getName() + "     " + racer.getWins() + "       " + racer.getRewards());
             }
     }
 
