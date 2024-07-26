@@ -13,8 +13,16 @@ public class EmployeeTest {
 
     @Before
     public void setUp() {
-       employee1 = new SalariedEmployee("Jay", Date.valueOf("1990-08-24"));
-       employee2 = new SalariedEmployee("Jay", Date.valueOf("1990-08-24"));
+       employee1 = getEmployee();
+
+       employee2 = getEmployee();
+    }
+
+    private static Employee getEmployee() {
+        return new Employee("Jay", Date.valueOf("1990-08-24")) {
+            public double pay() { return 0; }
+            public double payTaxes() { return 0; }
+        };
     }
 
     @Test
@@ -32,5 +40,27 @@ public class EmployeeTest {
     public void equals_shouldReturnFalse_differentName_sameHireDate() {
         employee2.setName("Martina");
         assertNotEquals(employee1, employee2);
+    }
+
+    // NAMED, MEMBER-LEVEL INNER CLASSES
+    // this is called a "mock" - a "fake" business type just for testing
+    private static class DummyEmployee extends Employee {
+
+        public DummyEmployee() {
+        }
+
+        public DummyEmployee(String name, Date hireDate) {
+            super(name, hireDate);
+        }
+
+        @Override
+        public double pay() {
+            return 0;
+        }
+
+        @Override
+        public double payTaxes() {
+            return 0;
+        }
     }
 }
