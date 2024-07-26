@@ -1,8 +1,4 @@
-package com.crisp.client;
-
-import com.crisp.Radish;
-import com.crisp.RadishColorComparator;
-import com.crisp.RadishGuysOnTopComparator;
+package com.crisp;
 
 import java.util.ArrayList;
 import java.util.List;
