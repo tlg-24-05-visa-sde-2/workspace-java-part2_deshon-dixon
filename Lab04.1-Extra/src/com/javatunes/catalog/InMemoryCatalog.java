@@ -77,6 +77,10 @@ public class InMemoryCatalog implements Catalog {
      */
     @Override
     public Collection<MusicItem> findByCategory(MusicCategory category) {
+        return catalogData.stream()
+                .filter(item -> item.getMusicCategory() == category)
+                .toList();
+        /*
         Collection<MusicItem> result = new ArrayList<>();
         for (MusicItem item : catalogData) {
             if (item.getMusicCategory().equals(category)) {
@@ -84,6 +88,7 @@ public class InMemoryCatalog implements Catalog {
             }
         }
         return result;
+         */
     }
 
     /**
@@ -130,13 +135,17 @@ public class InMemoryCatalog implements Catalog {
      * For example, Madonna's first album is simply titled, "Madonna."
      */
     public Collection<MusicItem> findBySelfTitle() {
-        Collection<MusicItem> result = new ArrayList<>();
-        for (MusicItem item : catalogData) {
-            if (item.getTitle().equals(item.getArtist())) {
-                result.add(item);
-            }
-        }
-        return result;
+        return catalogData.stream()
+                .filter(item -> Objects.equals(item.getTitle(), item.getArtist()))
+                .toList();
+
+//        Collection<MusicItem> result = new ArrayList<>();
+//        for (MusicItem item : catalogData) {
+//            if (item.getTitle().equals(item.getArtist())) {
+//                result.add(item);
+//            }
+//        }
+//        return result;
     }
 
 
