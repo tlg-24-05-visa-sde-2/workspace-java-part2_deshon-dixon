@@ -52,6 +52,10 @@ public class EmployeeStreamsTest {
      */
     @Test
     public void findAll_nameLengthAtMost5_sortBySalary() {
+        List<Employee> result = allEmployees.stream()
+                .filter(employee -> employee.getName().length() <= 5)
+                .sorted((employee1, employee2) -> employee1.getSalary().compareTo(employee2.getSalary()))
+                .collect(Collectors.toList());
 
     }
 
@@ -61,6 +65,10 @@ public class EmployeeStreamsTest {
      */
     @Test
     public void findAll_salaryAtLeast50000_sortByHireDate() {
+        List<Employee> result = allEmployees.stream()
+                .filter(employee -> employee.getSalary() >= 50_000.0)
+                .sorted((employee1, employee2) -> employee1.getHireDate().compareTo(employee2.getHireDate()))
+                .collect(Collectors.toList());
 
     }
 
@@ -69,6 +77,10 @@ public class EmployeeStreamsTest {
      */
     @Test
     public void count_salaryAtLeast75000() {
+        List<Employee> count = allEmployees.stream()
+                .filter(employee -> employee.getSalary() <= 75_000.0)
+                .sorted((employee1, employee2) -> employee1.getSalary().compareTo(employee2.getSalary()))
+                .toList();
 
     }
 
